@@ -40,7 +40,6 @@ const LoginForm = () => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
       const redirect = searchParams.get("redirect");
-      // @ts-expect-error We can accept any redirect URL here, 404ing is fine
       router.push(redirect ? decodeURIComponent(redirect) : "/");
       toast.success(`Welcome back, ${user.displayName}`);
     } catch (e) {
