@@ -69,6 +69,11 @@ const SignUpForm = () => {
             </>
           );
           break;
+        case "auth/weak-password":
+          toast.error(
+            "Your password is too weak, please include numbers and symbols to strengthen"
+          );
+          break;
         default:
           toast.error(
             "There was a problem signing up, please try again or contact support"
