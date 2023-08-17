@@ -23,10 +23,6 @@
     @apply focus:ring-2 outline-none;
   }
 
-  /* a {
-    @apply hover:text-orange-600;
-  } */
-
   h1,
   h2,
   h3,
@@ -72,7 +68,7 @@
   }
 
   .content {
-    @apply rounded-xl md:p-8 p-6 my-6 bg-white;
+    @apply rounded-xl md:p-8 p-6 my-6 bg-white shadow;
     width: min(100%, 36rem);
     transition: width 300ms ease-in-out;
   }
@@ -83,5 +79,36 @@
 
   .content-md {
     width: min(100%, 36rem);
+  }
+
+  @keyframes toast-enter {
+    0% {
+      transform: translateX(2rem);
+      opacity: 0;
+    }
+    100% {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  @keyframes toast-exit {
+    0% {
+      transform: none;
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(2rem);
+      opacity: 0;
+    }
+  }
+
+  .toast-enter {
+    animation: toast-enter 0.3s ease-in-out both;
+  }
+
+  .toast-exit {
+    animation: toast-exit 0.3s ease-in-out both;
   }
 }

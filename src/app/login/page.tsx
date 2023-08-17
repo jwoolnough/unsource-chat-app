@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContentSize } from "@/hooks/use-content-size";
+import { toast } from "react-toastify";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -24,7 +25,12 @@ export default function Login() {
   useContentSize("sm");
 
   const onSubmit: SubmitHandler<LoginSchema> = (data) => {
-    console.log(data);
+    toast.success("Welcome back, Jordan!", {
+      autoClose: false,
+    });
+    toast.error("There was a problem signing in. Please try again", {
+      autoClose: false,
+    });
   };
 
   return (

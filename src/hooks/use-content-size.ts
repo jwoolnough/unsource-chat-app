@@ -19,7 +19,7 @@ const useContentSize = (targetSize: ContentSize) => {
     contentElement.classList.remove(
       ...Object.values(CONTENT_SIZE_CLASSES)
     );
-    contentElement.classList.add(CONTENT_SIZE_CLASSES[targetSize], 'content-ready');
+    contentElement.classList.add(CONTENT_SIZE_CLASSES[targetSize]);
       
   }, [targetSize])
 };

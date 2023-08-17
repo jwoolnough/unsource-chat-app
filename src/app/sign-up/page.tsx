@@ -8,13 +8,22 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/services/firebase";
 import { useContentSize } from "@/hooks/use-content-size";
 
-const signUpSchema = z.object({
-  name: z.string().min(1, "Please enter your name"),
-  email: z.string().email("Please enter a valid email address"),
-  emailConfirm: z.string().email("Please enter a valid email address"),
-  password: z.string().min(1, "Password is a required field"),
-  passwordConfirm: z.string().min(1, "Password is a required field"),
-});
+const signUpSchema = z
+  .object({
+    name: z.string().min(1, "Please enter your name"),
+    email: z.string().email("Please enter a valid email address"),
+    emailConfirm: z.string().email("Please enter a valid email address"),
+    password: z.string().min(1, "Password is a required field"),
+    passwordConfirm: z.string().min(1, "Password is a required field"),
+  })
+  .refine(({ email, emailConfirm }) => email === emailConfirm, {
+    message: "Email addresses do not match",
+    path: ["emailConfirm"],
+  })
+  .refine(({ password, passwordConfirm }) => password === passwordConfirm, {
+    message: "Passwords do not match",
+    path: ["passwordConfirm"],
+  });
 
 type SignUpSchema = z.infer<typeof signUpSchema>;
 
