@@ -4,7 +4,6 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContentSize } from "@/hooks/use-content-size";
 import { toast } from "react-toastify";
 
 const loginSchema = z.object({
@@ -22,7 +21,6 @@ export default function Login() {
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
-  useContentSize("sm");
 
   const onSubmit: SubmitHandler<LoginSchema> = (data) => {
     toast.success("Welcome back, Jordan!", {
@@ -34,42 +32,44 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1 className="mb-4 text-2xl font-bold text-center">Log in</h1>
+    <main className="content content-sm">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h1 className="mb-4 text-2xl font-bold text-center">Log in</h1>
 
-      <Input
-        label="Email address"
-        type="email"
-        placeholder="joe@bloggs.com"
-        autoComplete="username"
-        autoFocus
-        error={errors.email?.message}
-        {...register("email")}
-      />
+        <Input
+          label="Email address"
+          type="email"
+          placeholder="joe@bloggs.com"
+          autoComplete="username"
+          autoFocus
+          error={errors.email?.message}
+          {...register("email")}
+        />
 
-      <PasswordInput
-        label="Password"
-        placeholder="••••••••••••"
-        autoComplete="current-password"
-        error={errors.password?.message}
-        {...register("password")}
-      />
+        <PasswordInput
+          label="Password"
+          placeholder="••••••••••••"
+          autoComplete="current-password"
+          error={errors.password?.message}
+          {...register("password")}
+        />
 
-      <button type="submit" className="button button-full mb-4">
-        Log in
-      </button>
+        <button type="submit" className="button button-full mb-4">
+          Log in
+        </button>
 
-      <p className="mb-4 text-center">
-        <Link className="link" href="/forgot-password">
-          Forgot password?
-        </Link>
-      </p>
-      <p className="pt-4 text-center border-t">
-        Don&apos;t have an account?{" "}
-        <Link className="link" href="/sign-up">
-          Sign up
-        </Link>
-      </p>
-    </form>
+        <p className="mb-4 text-center">
+          <Link className="link" href="/forgot-password">
+            Forgot password?
+          </Link>
+        </p>
+        <p className="pt-4 text-center border-t">
+          Don&apos;t have an account?{" "}
+          <Link className="link" href="/sign-up">
+            Sign up
+          </Link>
+        </p>
+      </form>
+    </main>
   );
 }

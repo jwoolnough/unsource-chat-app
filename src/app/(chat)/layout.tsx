@@ -8,10 +8,12 @@ export default function ChatLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-[min-content_1fr] gap-4">
-      <Nav />
+    <main className="content content-soft p-4">
+      <div className="grid grid-cols-[min-content_1fr] gap-4">
+        <Nav />
 
-      {children}
-    </div>
+        {children}
+      </div>
+    </main>
   );
 }

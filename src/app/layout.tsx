@@ -31,9 +31,7 @@ export default function RootLayout({
             </Link>
           </header>
 
-          <main id="content" className="content">
-            {children}
-          </main>
+          {children}
 
           <footer className="sm:flex mt-auto text-sm">
             <p className="text-center">

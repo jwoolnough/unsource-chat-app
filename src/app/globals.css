@@ -68,17 +68,17 @@
   }
 
   .content {
-    @apply rounded-[2.75rem] md:p-4 p-3 my-6 bg-white shadow-lg;
+    @apply rounded-xl p-8 my-6 bg-white shadow-lg;
+    /* @apply rounded-[2.75rem] md:p-4 p-3 my-6 bg-white shadow-lg; */
     width: min(100%, 36rem);
-    transition: width 300ms ease-in-out;
+  }
+
+  .content-soft {
+    @apply rounded-[2.75rem];
   }
 
   .content-sm {
     width: min(100%, 24rem);
-  }
-
-  .content-md {
-    width: min(100%, 36rem);
   }
 
   @keyframes toast-enter {
