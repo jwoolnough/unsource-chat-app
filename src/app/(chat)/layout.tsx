@@ -34,7 +34,9 @@ export default function ChatLayout({
       <div className="grid gap-4 sm:grid-cols-[min-content_1fr]">
         <Nav className="max-sm:hidden" />
 
-        {children}
+        <div className="flex max-h-[40rem] min-h-[30rem] flex-col overflow-auto rounded-[1.75rem] bg-slate-50">
+          {children}
+        </div>
 
         <Nav className="sm:hidden" />
       </div>
