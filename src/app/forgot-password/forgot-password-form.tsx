@@ -3,8 +3,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { sendPasswordResetEmail } from "firebase/auth";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { z } from "zod";
 
 import { auth } from "@/services/firebase";
@@ -20,6 +21,7 @@ type ForgotPasswordSchema = z.infer<typeof forgotPasswordSchema>;
 
 const ForgotPasswordForm = () => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -34,8 +36,14 @@ const ForgotPasswordForm = () => {
   const onSubmit: SubmitHandler<ForgotPasswordSchema> = async ({ email }) => {
     try {
       await sendPasswordResetEmail(auth, email);
+      router.push("/login");
+      toast.success(
+        "An email with a link to reset your password has been sent"
+      );
     } catch (e) {
-      console.log(e);
+      toast.error(
+        "There was a problem resetting your password, please try again or contact support"
+      );
     }
   };
 
