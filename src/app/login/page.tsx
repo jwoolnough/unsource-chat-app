@@ -5,6 +5,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/services/firebase";
+import { FirebaseError } from "firebase/app";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -14,21 +18,29 @@ const loginSchema = z.object({
 type LoginSchema = z.infer<typeof loginSchema>;
 
 export default function Login() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: searchParams.get("email") || "",
+    },
   });
 
-  const onSubmit: SubmitHandler<LoginSchema> = (data) => {
-    toast.success("Welcome back, Jordan!", {
-      autoClose: false,
-    });
-    toast.error("There was a problem signing in. Please try again", {
-      autoClose: false,
-    });
+  const onSubmit: SubmitHandler<LoginSchema> = async ({ email, password }) => {
+    try {
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      router.push("/");
+      toast.success(`Welcome back, ${user.displayName}`);
+    } catch (e) {
+      console.log(e);
+      if (e instanceof FirebaseError) {
+      }
+    }
   };
 
   return (

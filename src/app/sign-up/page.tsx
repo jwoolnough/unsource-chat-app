@@ -4,8 +4,11 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/services/firebase";
+import { FirebaseError } from "firebase/app";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const signUpSchema = z
   .object({
@@ -27,6 +30,7 @@ const signUpSchema = z
 type SignUpSchema = z.infer<typeof signUpSchema>;
 
 export default function Login() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -35,12 +39,37 @@ export default function Login() {
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit: SubmitHandler<SignUpSchema> = async ({ email, password }) => {
+  const onSubmit: SubmitHandler<SignUpSchema> = async ({
+    name,
+    email,
+    password,
+  }) => {
     try {
-      const user = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(user);
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(user, {
+        displayName: name,
+      });
+      toast.success(`Welcome, ${name}`);
+      router.push("/");
     } catch (e) {
-      console.log(e);
+      if (e instanceof FirebaseError) {
+        switch (e.code) {
+          case "auth/email-already-in-use":
+            toast.error(
+              <>
+                An account with this email already exists, please{" "}
+                <Link href={`/login?email=${email}`}>log in</Link> to continue
+              </>
+            );
+            break;
+        }
+      } else {
+        toast.error("There was a problem signing in. Please try again");
+      }
     }
   };
 
@@ -52,8 +81,8 @@ export default function Login() {
         <h2>Your details</h2>
         <div className="sm:grid-cols-2 gap-x-4 grid">
           <Input
-            label="Name"
-            placeholder="Joe Bloggs"
+            label="Display name"
+            placeholder="Joe"
             autoFocus
             error={errors.name?.message}
             containerClassName="sm:col-span-2"

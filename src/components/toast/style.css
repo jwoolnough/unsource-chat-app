@@ -22,3 +22,38 @@
 .toast-body {
   @apply p-0;
 }
+
+.toast a {
+  @apply decoration-slate-200 hover:decoration-current underline;
+}
+
+@keyframes toast-enter {
+  0% {
+    transform: translateX(2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes toast-exit {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(2rem);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toast-enter 0.3s ease-in-out both;
+}
+
+.toast-exit {
+  animation: toast-exit 0.3s ease-in-out both;
+}
