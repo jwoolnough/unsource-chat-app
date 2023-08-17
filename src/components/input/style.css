@@ -3,6 +3,11 @@
   @apply translate-y-[-23px] scale-75 bg-white text-orange-400 text-opacity-80;
 }
 
+.input-container.is-invalid:has(.input:focus, .input:not(:placeholder-shown))
+  .input-label {
+  @apply text-red-400;
+}
+
 .input-container:has(.input:focus) .input-label {
   @apply text-opacity-100 !important;
 }
