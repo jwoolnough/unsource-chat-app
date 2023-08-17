@@ -38,7 +38,9 @@ const LoginForm = () => {
   const onSubmit: SubmitHandler<LoginSchema> = async ({ email, password }) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
-      router.push("/");
+      const redirect = searchParams.get("redirect");
+      // @ts-expect-error We can accept any redirect URL here, 404ing is fine
+      router.push(redirect ? decodeURIComponent(redirect) : "/");
       toast.success(`Welcome back, ${user.displayName}`);
     } catch (e) {
       switch (e instanceof FirebaseError && e.code) {
