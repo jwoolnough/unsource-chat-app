@@ -6,7 +6,10 @@ import { ToastProvider } from "@/components/toast";
 import "./globals.css";
 
 export const metadata = {
-  title: "Chat | Unsource",
+  title: {
+    template: "%s | Unsource",
+    default: "Chat | Unsource",
+  },
 };
 
 export default function RootLayout({
