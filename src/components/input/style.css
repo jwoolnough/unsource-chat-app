@@ -1,0 +1,13 @@
+.input-container:has(.input:focus, .input:not(:placeholder-shown))
+  .input-label {
+  @apply translate-y-[-23px] scale-75 bg-white text-orange-400 text-opacity-80;
+}
+
+.input-container:has(.input:focus) .input-label {
+  @apply text-opacity-100 !important;
+}
+
+.input-container:has(.input:focus, .input:not(:placeholder-shown))
+  .input::placeholder {
+  @apply opacity-100 delay-100;
+}
