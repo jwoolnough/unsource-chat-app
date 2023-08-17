@@ -5,6 +5,7 @@
 .toast {
   @apply relative mt-2 flex min-h-[3.5rem] rounded-md bg-white px-6 py-2 shadow;
   @apply before:absolute before:inset-0 before:w-1 before:bg-current;
+  @apply max-[480px]:m-2;
 }
 
 .toast::before {
@@ -29,7 +30,7 @@
 
 @keyframes toast-enter {
   0% {
-    transform: translateX(2rem);
+    transform: translateY(100%);
     opacity: 0;
   }
   100% {
@@ -39,6 +40,29 @@
 }
 
 @keyframes toast-exit {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes toast-enter-desktop {
+  0% {
+    transform: translateX(2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes toast-exit-desktop {
   0% {
     transform: none;
     opacity: 1;
@@ -56,4 +80,14 @@
 
 .toast-exit {
   animation: toast-exit 0.3s ease-in-out both;
+}
+
+@media screen and (min-width: 481px) {
+  .toast-enter {
+    animation: toast-enter-desktop 0.3s ease-in-out both;
+  }
+
+  .toast-exit {
+    animation: toast-exit-desktop 0.3s ease-in-out both;
+  }
 }
