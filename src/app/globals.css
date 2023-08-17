@@ -52,19 +52,15 @@
   }
 
   .button {
-    @apply hover:bg-orange-600 inline-block px-6 py-3 text-white bg-orange-400 rounded-full;
+    @apply hover:bg-orange-600 relative inline-block px-6 py-3 text-white bg-orange-400 rounded-full;
+  }
+
+  .button[disabled] {
+    @apply pointer-events-none;
   }
 
   .button-full {
     @apply w-full;
-  }
-
-  .tippy-box {
-    @apply bg-slate-950;
-  }
-
-  .tippy-arrow {
-    @apply text-slate-950;
   }
 
   .content {

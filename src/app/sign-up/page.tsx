@@ -11,6 +11,7 @@ import { z } from "zod";
 
 import { auth } from "@/services/firebase";
 
+import { Button } from "@/components/button";
 import { Input, PasswordInput } from "@/components/input";
 
 const signUpSchema = z
@@ -37,7 +38,7 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
   });
@@ -59,19 +60,20 @@ export default function Login() {
       toast.success(`Welcome, ${name}`);
       router.push("/");
     } catch (e) {
-      if (e instanceof FirebaseError) {
-        switch (e.code) {
-          case "auth/email-already-in-use":
-            toast.error(
-              <>
-                An account with this email already exists, please{" "}
-                <Link href={`/login?email=${email}`}>log in</Link> to continue
-              </>
-            );
-            break;
-        }
-      } else {
-        toast.error("There was a problem signing in. Please try again");
+      switch (e instanceof FirebaseError && e.code) {
+        case "auth/email-already-in-use":
+          toast.error(
+            <>
+              An account with this email already exists, please{" "}
+              <Link href={`/login?email=${email}`}>log in</Link> to continue
+            </>
+          );
+          break;
+        default:
+          toast.error(
+            "There was a problem signing up, please try again or contact support"
+          );
+          break;
       }
     }
   };
@@ -130,9 +132,13 @@ export default function Login() {
           />
         </div>
 
-        <button type="submit" className="button button-full mb-4">
+        <Button
+          type="submit"
+          className="button button-full mb-4"
+          isLoading={isSubmitting}
+        >
           Sign up
-        </button>
+        </Button>
 
         <p className="pt-4 text-center border-t">
           Already have an account?{" "}

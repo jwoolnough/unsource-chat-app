@@ -11,6 +11,7 @@ import { z } from "zod";
 
 import { auth } from "@/services/firebase";
 
+import { Button } from "@/components/button";
 import { Input, PasswordInput } from "@/components/input";
 
 const loginSchema = z.object({
@@ -26,7 +27,7 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -40,8 +41,26 @@ export default function Login() {
       router.push("/");
       toast.success(`Welcome back, ${user.displayName}`);
     } catch (e) {
-      console.log(e);
-      if (e instanceof FirebaseError) {
+      switch (e instanceof FirebaseError && e.code) {
+        case "auth/user-not-found":
+        case "auth/wrong-password":
+          toast.error("Unable to log in, please check your credentials");
+          break;
+        case "auth/too-many-requests":
+          toast.error(
+            <>
+              You&apos;ve been temporarily locked out due to too many failed
+              attempts. Try again later or{" "}
+              <Link href={`/forgot-password?email=${email}`}>reset your password</Link> to log in
+              now
+            </>
+          );
+          break;
+        default:
+          toast.error(
+            "There was a problem logging in, please try again or contact support"
+          );
+          break;
       }
     }
   };
@@ -69,9 +88,13 @@ export default function Login() {
           {...register("password")}
         />
 
-        <button type="submit" className="button button-full mb-4">
+        <Button
+          type="submit"
+          className="button button-full mb-4"
+          isLoading={isSubmitting}
+        >
           Log in
-        </button>
+        </Button>
 
         <p className="mb-4 text-center">
           <Link className="link" href="/forgot-password">
