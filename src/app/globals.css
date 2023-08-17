@@ -20,7 +20,7 @@
 
   a,
   button {
-    @apply outline-none focus:ring-2;
+    @apply focus:ring-2 outline-none;
   }
 
   /* a {
@@ -31,15 +31,15 @@
 @layer components {
   .link,
   .button {
-    @apply font-medium font-rounded;
+    @apply font-rounded font-medium;
   }
-  
+
   .link {
-    @apply text-orange-400 hover:text-orange-600;
+    @apply hover:text-orange-600 text-orange-400;
   }
 
   .button {
-    @apply inline-block rounded-full py-3 px-6 bg-orange-400 text-white hover:bg-orange-600;
+    @apply hover:bg-orange-600 inline-block px-6 py-3 text-white bg-orange-400 rounded-full;
   }
 
   .button-full {
@@ -48,7 +48,7 @@
 
   .tippy-box {
     @apply bg-slate-950;
-  } 
+  }
 
   .tippy-arrow {
     @apply text-slate-950;

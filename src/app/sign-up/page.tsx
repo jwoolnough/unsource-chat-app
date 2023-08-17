@@ -31,7 +31,7 @@ export default function Login() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1 className="text-2xl font-bold text-center mb-4">Sign up</h1>
+      <h1 className="mb-4 text-2xl font-bold text-center">Sign up</h1>
 
       <Input
         label="Name"
@@ -70,7 +70,7 @@ export default function Login() {
         Sign up
       </button>
 
-      <p className="text-center pt-4 border-t">
+      <p className="pt-4 text-center border-t">
         Already have an account?{" "}
         <Link className="link" href="/login">
           Log in

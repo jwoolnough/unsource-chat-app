@@ -9,10 +9,10 @@
 }
 
 .input-container:has(.input:focus) .input-label {
-  @apply text-opacity-100 text-orange-400 !important;
+  @apply text-orange-400 text-opacity-100!important;
 }
 
 .input-container:has(.input:focus, .input:not(:placeholder-shown))
   .input::placeholder {
-  @apply opacity-100 delay-100;
+  @apply delay-100 opacity-100;
 }
