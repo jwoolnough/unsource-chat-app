@@ -4,6 +4,7 @@ import { clsxm } from "@/utils/clsxm";
 
 export default function Chat() {
   return (
+    // TODO: Make this component, add clipPath
     <div className="bg-slate-50 rounded-[1.75rem] h-[30rem] overflow-auto flex flex-col">
       <div className="backdrop-blur bg-slate-50 bg-opacity-70 sticky top-0 flex justify-between p-4">
         <h1 className="mb-0">Chat</h1>

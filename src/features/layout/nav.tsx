@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
+import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { ComponentProps, MouseEventHandler } from "react";
+import { useRouter } from "next/navigation";
 import {
   FiHelpCircle,
   FiLogOut,
@@ -13,58 +13,13 @@ import { toast } from "react-toastify";
 
 import { auth } from "@/services/firebase";
 
-import { Tippy } from "@/components/tippy";
+import { NavItem } from "./nav-item";
 
-import { clsxm } from "@/utils/clsxm";
-
-type RenderIconProps = {
-  size: number;
-};
-
-interface NavItemProps extends Omit<ComponentProps<"li">, "onClick"> {
-  title: string;
-  href?: ComponentProps<typeof Link>["href"];
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  renderIcon: (iconProps: RenderIconProps) => React.ReactElement;
+interface NavProps {
+  className: string;
 }
 
-const NavItem = ({
-  title,
-  href,
-  renderIcon,
-  onClick,
-  ...rest
-}: NavItemProps) => {
-  const isActive = href === usePathname();
-
-  const buttonClasses = clsxm(
-    "w-9 h-9 text-slate-400 flex items-center justify-center rounded-md",
-    "hover:text-orange-500",
-    isActive && "text-orange-500 bg-orange-100"
-  );
-
-  const iconProps: RenderIconProps = {
-    size: 22,
-  };
-
-  return (
-    <li {...rest}>
-      <Tippy content={title}>
-        {href ? (
-          <Link href={href} className={buttonClasses}>
-            {renderIcon(iconProps)}
-          </Link>
-        ) : (
-          <button type="button" onClick={onClick} className={buttonClasses}>
-            {renderIcon(iconProps)}
-          </button>
-        )}
-      </Tippy>
-    </li>
-  );
-};
-
-const Nav = () => {
+const Nav = ({ className }: NavProps) => {
   const router = useRouter();
 
   const handleLogOut = async () => {
@@ -77,8 +32,11 @@ const Nav = () => {
   };
 
   return (
-    <nav className="my-6">
-      <ul className="flex flex-col h-full gap-[0.375rem]">
+    <nav className={className}>
+      <Link href="/" className="max-sm:hidden">
+        <Image src="/img/logogram.svg" alt="Unsource" width={24} height={14} />
+      </Link>
+      <ul className="flex sm:flex-col sm:h-full gap-[0.375rem] justify-between max-sm:mx-4">
         <NavItem
           title="Chat"
           renderIcon={(iconProps) => <FiMessageCircle {...iconProps} />}

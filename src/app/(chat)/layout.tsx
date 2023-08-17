@@ -30,10 +30,12 @@ export default function ChatLayout({
 
   return (
     <main className="content content-soft p-4">
-      <div className="grid grid-cols-[min-content_1fr] gap-4">
-        <Nav />
+      <div className="grid sm:grid-cols-[min-content_1fr] gap-4">
+        <Nav className="max-sm:hidden" />
 
         {children}
+
+        <Nav className="sm:hidden" />
       </div>
     </main>
   );
