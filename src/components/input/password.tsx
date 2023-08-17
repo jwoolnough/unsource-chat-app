@@ -3,8 +3,8 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import { clsxm } from "@/utils/clsxm";
 
-import { Input, type InputProps, type RenderInputRightElement } from "./input";
 import { Tippy } from "../tippy/tippy";
+import { Input, type InputProps, type RenderInputRightElement } from "./input";
 
 type PasswordInputProps = Omit<InputProps, "ref">;
 

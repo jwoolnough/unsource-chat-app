@@ -1,14 +1,17 @@
 "use client";
-import { Input, PasswordInput } from "@/components/input";
-import Link from "next/link";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "react-toastify";
-import { useRouter, useSearchParams } from "next/navigation";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/services/firebase";
 import { FirebaseError } from "firebase/app";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { z } from "zod";
+
+import { auth } from "@/services/firebase";
+
+import { Input, PasswordInput } from "@/components/input";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),

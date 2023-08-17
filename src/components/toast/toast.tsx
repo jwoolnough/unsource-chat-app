@@ -1,9 +1,9 @@
 "use client";
 
 import { ToastContainer, cssTransition } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.minimal.css";
+
 import "./style.css";
 
 type ToastProviderProps = {

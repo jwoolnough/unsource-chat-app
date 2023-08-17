@@ -20,7 +20,7 @@
 //       ...Object.values(CONTENT_SIZE_CLASSES)
 //     );
 //     contentElement.classList.add(CONTENT_SIZE_CLASSES[targetSize]);
-      
+
 //   }, [targetSize])
 // };
 

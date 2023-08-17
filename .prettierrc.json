@@ -1,4 +1,13 @@
 {
   "trailingComma": "es5",
-  "semi": true
+  "semi": true,
+  "importOrder": [
+    "^@/services/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/components/(.*)$",
+    "^@/utils/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

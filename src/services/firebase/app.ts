@@ -9,4 +9,4 @@ const app = initializeApp({
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 });
 
-export { app } 
+export { app };

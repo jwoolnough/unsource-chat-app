@@ -1,7 +1,9 @@
-import Link from "next/link";
-import "./globals.css";
 import Image from "next/image";
+import Link from "next/link";
+
 import { ToastProvider } from "@/components/toast";
+
+import "./globals.css";
 
 export const metadata = {
   title: "Chat | Unsource",

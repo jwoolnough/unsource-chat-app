@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Tippy } from "../tippy";
-import "./style.css";
+import { usePathname } from "next/navigation";
+import { ComponentProps, cloneElement } from "react";
 import {
   FiHelpCircle,
   FiLogOut,
@@ -8,9 +8,11 @@ import {
   FiSettings,
   FiUser,
 } from "react-icons/fi";
-import { ComponentProps, cloneElement } from "react";
+
 import { clsxm } from "@/utils/clsxm";
-import { usePathname } from "next/navigation";
+
+import { Tippy } from "../tippy";
+import "./style.css";
 
 interface NavItemProps extends ComponentProps<"li"> {
   title: string;

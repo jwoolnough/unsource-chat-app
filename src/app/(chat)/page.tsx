@@ -1,5 +1,6 @@
-import { clsxm } from "@/utils/clsxm";
 import { FiSearch, FiSend } from "react-icons/fi";
+
+import { clsxm } from "@/utils/clsxm";
 
 export default function Chat() {
   return (

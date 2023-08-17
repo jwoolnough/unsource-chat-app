@@ -1,7 +1,9 @@
-import { forwardRef, useId } from "react";
-import { clsxm } from "@/utils/clsxm";
-import "./style.css";
 import { AnimatePresence, motion } from "framer-motion";
+import { forwardRef, useId } from "react";
+
+import { clsxm } from "@/utils/clsxm";
+
+import "./style.css";
 
 type RenderInputRightElement = (renderInputRightElementBag: {
   defaultClasses: string;
