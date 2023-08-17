@@ -1,6 +1,7 @@
 import { forwardRef, useId } from "react";
 import { clsxm } from "@/utils/clsxm";
 import "./style.css";
+import { AnimatePresence, motion } from "framer-motion";
 
 type RenderInputRightElement = (renderInputRightElementBag: {
   defaultClasses: string;
@@ -71,7 +72,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           })}
         </div>
 
-        {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
+        <AnimatePresence>
+          {error && (
+            <motion.p
+              className="before:pt-1 before:block text-sm text-red-400"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+            >
+              {error}
+            </motion.p>
+          )}
+        </AnimatePresence>
       </div>
     );
   }
