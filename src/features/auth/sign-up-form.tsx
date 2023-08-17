@@ -88,7 +88,7 @@ const SignUpForm = () => {
       <h1 className="text-center">Sign up</h1>
 
       <h2>Your details</h2>
-      <div className="sm:grid-cols-2 gap-x-4 grid">
+      <div className="grid gap-x-4 sm:grid-cols-2">
         <Input
           label="Display name"
           placeholder="Joe"
@@ -118,7 +118,7 @@ const SignUpForm = () => {
       </div>
 
       <h2>Choose a password</h2>
-      <div className="sm:grid-cols-2 gap-x-4 grid">
+      <div className="grid gap-x-4 sm:grid-cols-2">
         <PasswordInput
           label="Password"
           placeholder="••••••••••••"
@@ -144,7 +144,7 @@ const SignUpForm = () => {
         Sign up
       </Button>
 
-      <p className="pt-4 text-center border-t">
+      <p className="border-t pt-4 text-center">
         Already have an account?{" "}
         <Link className="link" href="/login">
           Log in

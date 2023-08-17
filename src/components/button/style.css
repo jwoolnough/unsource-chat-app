@@ -1,6 +1,6 @@
 .button-spinner {
-  @apply animate-spin top-[calc(50%-.75rem)] left-[calc(50%-.75rem)] absolute pointer-events-none transition;
-  @apply border-[3px] w-6 h-6 rounded-full border-[rgba(255,255,255,.5)] border-b-white opacity-0;
+  @apply pointer-events-none absolute left-[calc(50%-.75rem)] top-[calc(50%-.75rem)] animate-spin transition;
+  @apply h-6 w-6 rounded-full border-[3px] border-[rgba(255,255,255,.5)] border-b-white opacity-0;
 }
 .button-loading {
   @apply text-opacity-0;

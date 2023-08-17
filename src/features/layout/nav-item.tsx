@@ -27,9 +27,9 @@ const NavItem = ({
   const isActive = href === usePathname();
 
   const buttonClasses = clsxm(
-    "w-9 h-9 text-slate-400 flex items-center justify-center rounded-md",
+    "flex h-9 w-9 items-center justify-center rounded-md text-slate-400",
     "hover:text-orange-500",
-    isActive && "text-orange-500 bg-orange-100"
+    isActive && "bg-orange-100 text-orange-500"
   );
 
   const iconProps: RenderIconProps = {

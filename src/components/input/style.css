@@ -14,5 +14,5 @@
 
 .input-container:has(.input:focus, .input:not(:placeholder-shown))
   .input::placeholder {
-  @apply delay-100 opacity-100;
+  @apply opacity-100 delay-100;
 }

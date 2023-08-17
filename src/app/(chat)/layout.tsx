@@ -24,13 +24,13 @@ export default function ChatLayout({
 
   if (loading || !user) {
     return (
-      <span className="animate-spin w-8 h-8 border-4 border-[#8389ad55] rounded-full border-b-slate-600"></span>
+      <span className="h-8 w-8 animate-spin rounded-full border-4 border-[#8389ad55] border-b-slate-600"></span>
     );
   }
 
   return (
     <main className="content content-soft p-4">
-      <div className="grid sm:grid-cols-[min-content_1fr] gap-4">
+      <div className="grid gap-4 sm:grid-cols-[min-content_1fr]">
         <Nav className="max-sm:hidden" />
 
         {children}

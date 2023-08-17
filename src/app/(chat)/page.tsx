@@ -5,8 +5,8 @@ import { clsxm } from "@/utils/clsxm";
 export default function Chat() {
   return (
     // TODO: Make this component, add clipPath
-    <div className="bg-slate-50 rounded-[1.75rem] h-[30rem] overflow-auto flex flex-col">
-      <div className="backdrop-blur bg-slate-50 bg-opacity-70 sticky top-0 flex justify-between p-4">
+    <div className="flex h-[30rem] flex-col overflow-auto rounded-[1.75rem] bg-slate-50">
+      <div className="sticky top-0 flex justify-between bg-slate-50 bg-opacity-70 p-4 backdrop-blur">
         <h1 className="mb-0">Chat</h1>
         <button type="button" className="text-slate-400">
           <FiSearch size={22} />
@@ -15,12 +15,12 @@ export default function Chat() {
 
       <div className="flex-grow p-4 pb-0"></div>
 
-      <form className="bg-slate-50 bg-opacity-70 backdrop-blur sticky bottom-0 p-4">
+      <form className="sticky bottom-0 bg-slate-50 bg-opacity-70 p-4 backdrop-blur">
         <label className="sr-only">Message</label>
         <div className="relative">
           <textarea
             className={clsxm(
-              "placeholder:text-slate-200 rounded-xl block w-full px-4 py-3 bg-white outline-none resize-none",
+              "block w-full resize-none rounded-xl bg-white px-4 py-3 outline-none placeholder:text-slate-200",
               "shadow-sm"
             )}
             placeholder="Write your message..."
@@ -28,7 +28,7 @@ export default function Chat() {
           ></textarea>
           <button
             type="submit"
-            className="button w-9 h-9 absolute top-[0.375rem] right-[0.375rem] p-0 rounded-md flex justify-center items-center"
+            className="button absolute right-[0.375rem] top-[0.375rem] flex h-9 w-9 items-center justify-center rounded-md p-0"
             aria-label="Send"
           >
             <FiSend size={22} />

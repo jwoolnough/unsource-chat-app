@@ -48,7 +48,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <label
             className={clsxm(
               "input-label",
-              "absolute top-[13px] left-[13px] inline-block origin-top-left cursor-text px-1 text-slate-200",
+              "absolute left-[13px] top-[13px] inline-block origin-top-left cursor-text px-1 text-slate-200",
               labelClassName
             )}
             htmlFor={id}
@@ -61,11 +61,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={id}
             className={clsxm(
               "input",
-              "w-full rounded-md border border-accent bg-white px-4 py-3",
+              "border-accent w-full rounded-md border bg-white px-4 py-3",
               "outline-none focus:border-orange-400",
               "placeholder:text-slate-200 placeholder:opacity-0 placeholder:transition-opacity",
               error &&
-                "border-red-300 focus:border-red-300 focus:ring-2 ring-red-100",
+                "border-red-300 ring-red-100 focus:border-red-300 focus:ring-2",
               className
             )}
             placeholder={placeholder}
@@ -79,7 +79,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <AnimatePresence>
           {error && (
             <motion.p
-              className="before:pt-1 before:block text-sm text-red-400"
+              className="text-sm text-red-400 before:block before:pt-1"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

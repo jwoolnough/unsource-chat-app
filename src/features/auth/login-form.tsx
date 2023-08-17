@@ -71,7 +71,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1 className="mb-4 text-2xl font-bold text-center">Log in</h1>
+      <h1 className="mb-4 text-center text-2xl font-bold">Log in</h1>
 
       <Input
         label="Email address"
@@ -104,7 +104,7 @@ const LoginForm = () => {
           Forgot password?
         </Link>
       </p>
-      <p className="pt-4 text-center border-t">
+      <p className="border-t pt-4 text-center">
         Don&apos;t have an account?{" "}
         <Link className="link" href="/sign-up">
           Sign up

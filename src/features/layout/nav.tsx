@@ -33,10 +33,17 @@ const Nav = ({ className }: NavProps) => {
 
   return (
     <nav className={className}>
-      <Link href="/" className="max-sm:hidden">
-        <Image src="/img/logogram.svg" alt="Unsource" width={24} height={14} />
-      </Link>
-      <ul className="flex sm:flex-col sm:h-full gap-[0.375rem] justify-between max-sm:mx-4">
+      <ul className="flex justify-between gap-[0.375rem] max-sm:mx-4 sm:h-full sm:flex-col">
+        <li className="mb-auto mt-[1.75rem] flex justify-center max-sm:hidden">
+          <Link href="/">
+            <Image
+              src="/img/logogram.svg"
+              alt="Unsource"
+              width={24}
+              height={14}
+            />
+          </Link>
+        </li>
         <NavItem
           title="Chat"
           renderIcon={(iconProps) => <FiMessageCircle {...iconProps} />}
@@ -61,7 +68,7 @@ const Nav = ({ className }: NavProps) => {
           title="Log out"
           renderIcon={(iconProps) => <FiLogOut {...iconProps} />}
           onClick={handleLogOut}
-          className="mt-auto"
+          className="mt-auto sm:mb-[1.375rem]"
         />
       </ul>
     </nav>

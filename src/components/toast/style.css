@@ -1,9 +1,9 @@
 .toast-container {
-  @apply text-slate-900 font-rounded md:right-12 md:bottom-12 p-0 font-medium;
+  @apply p-0 font-rounded font-medium text-slate-900 md:bottom-12 md:right-12;
 }
 
 .toast {
-  @apply min-h-[3.5rem] relative flex px-6 py-2 mt-2 bg-white rounded-md shadow;
+  @apply relative mt-2 flex min-h-[3.5rem] rounded-md bg-white px-6 py-2 shadow;
   @apply before:absolute before:inset-0 before:w-1 before:bg-current;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .toast .Toastify__close-button {
-  @apply text-slate-200 hover:text-slate-900 self-center ml-4 opacity-100;
+  @apply ml-4 self-center text-slate-200 opacity-100 hover:text-slate-900;
 }
 
 .toast-body {
@@ -24,7 +24,7 @@
 }
 
 .toast a {
-  @apply decoration-slate-200 hover:decoration-current underline;
+  @apply underline decoration-slate-200 hover:decoration-current;
 }
 
 @keyframes toast-enter {

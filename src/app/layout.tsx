@@ -22,9 +22,9 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/itc7dtm.css" />
       </head>
-      <body className="relative flex isolate flex-col items-center min-h-screen p-6 bg-slate-50 before:bg-[url('/img/bg-pattern.svg')] before:-z-10 before:opacity-[0.06] before:absolute before:inset-0">
+      <body className="relative isolate flex min-h-screen flex-col items-center bg-slate-50 p-6 before:absolute before:inset-0 before:-z-10 before:bg-[url('/img/bg-pattern.svg')] before:opacity-[0.06]">
         <ToastProvider>
-          <header className="flex mb-auto">
+          <header className="mb-auto flex">
             <Link href="/">
               <Image
                 src="/img/logo.svg"
@@ -38,17 +38,17 @@ export default function RootLayout({
 
           {children}
 
-          <footer className="sm:flex mt-auto text-sm">
+          <footer className="mt-auto text-sm sm:flex">
             <p className="text-center">
               &copy; {new Date().getFullYear()} Unsource
             </p>
             <ul className="flex">
-              <li className="sm:before:content-['·'] sm:before:mx-3">
+              <li className="sm:before:mx-3 sm:before:content-['·']">
                 <Link href="/privacy" className="hover:text-orange-400">
                   Privacy Policy
                 </Link>
               </li>
-              <li className="before:content-['·'] before:mx-3">
+              <li className="before:mx-3 before:content-['·']">
                 <Link
                   href="/terms-of-service"
                   className="hover:text-orange-400"

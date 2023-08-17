@@ -20,7 +20,7 @@
 
   a,
   button {
-    @apply focus:ring-2 outline-none;
+    @apply outline-none focus:ring-2;
   }
 
   h1,
@@ -48,11 +48,11 @@
   }
 
   .link {
-    @apply hover:text-orange-600 text-orange-400;
+    @apply text-orange-400 hover:text-orange-600;
   }
 
   .button {
-    @apply hover:bg-orange-600 relative inline-block px-6 py-3 text-white bg-orange-400 rounded-full;
+    @apply relative inline-block rounded-full bg-orange-400 px-6 py-3 text-white hover:bg-orange-600;
   }
 
   .button[disabled] {
@@ -64,7 +64,7 @@
   }
 
   .content {
-    @apply rounded-xl p-8 my-6 bg-white shadow-lg;
+    @apply my-6 rounded-xl bg-white p-8 shadow-lg;
     /* @apply rounded-[2.75rem] md:p-4 p-3 my-6 bg-white shadow-lg; */
     width: min(100%, 36rem);
   }
