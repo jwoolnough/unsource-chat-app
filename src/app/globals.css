@@ -26,6 +26,23 @@
   /* a {
     @apply hover:text-orange-600;
   } */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-4 font-bold;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
 }
 
 @layer components {
@@ -52,5 +69,19 @@
 
   .tippy-arrow {
     @apply text-slate-950;
+  }
+
+  .content {
+    @apply rounded-xl md:p-8 p-6 my-6 bg-white;
+    width: min(100%, 36rem);
+    transition: width 300ms ease-in-out;
+  }
+
+  .content-sm {
+    width: min(100%, 24rem);
+  }
+
+  .content-md {
+    width: min(100%, 36rem);
   }
 }

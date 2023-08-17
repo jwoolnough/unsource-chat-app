@@ -28,9 +28,11 @@ export default function RootLayout({
             />
           </Link>
         </header>
-        <div className="rounded-xl w-full max-w-sm p-6 my-6 bg-white">
+
+        <main id="content" className="content">
           {children}
-        </div>
+        </main>
+
         <footer className="sm:flex mt-auto text-sm">
           <p className="text-center">
             &copy; {new Date().getFullYear()} Unsource

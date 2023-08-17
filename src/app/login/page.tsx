@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContentSize } from "@/hooks/use-content-size";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -20,6 +21,7 @@ export default function Login() {
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
+  useContentSize("sm");
 
   const onSubmit: SubmitHandler<LoginSchema> = (data) => {
     console.log(data);

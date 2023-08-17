@@ -32,13 +32,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const id = useId();
 
     return (
-      <div className="mb-4">
+      <div className={clsxm("mb-4", containerClassName)}>
         <div
           className={clsxm(
             "input-container",
             "relative",
-            error && "is-invalid",
-            containerClassName
+            error && "is-invalid"
           )}
         >
           <label
@@ -57,7 +56,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={id}
             className={clsxm(
               "input",
-              "w-full rounded-md border border-accent bg-transparent px-4 py-3",
+              "w-full rounded-md border border-accent bg-white px-4 py-3",
               "outline-none focus:border-orange-400",
               "placeholder:text-slate-200 placeholder:opacity-0 placeholder:transition-opacity",
               error &&
