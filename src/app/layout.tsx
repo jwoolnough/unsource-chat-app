@@ -3,7 +3,7 @@ import "./globals.css";
 import Image from "next/image";
 
 export const metadata = {
-  title: "CV Parser | Unsource",
+  title: "Chat | Unsource",
 };
 
 export default function RootLayout({

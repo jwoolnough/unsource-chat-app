@@ -4,37 +4,48 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
-const loginSchema = z.object({
+const signUpSchema = z.object({
+  name: z.string().min(1, "Please enter your name"),
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(1, "Password is a required field"),
+  passwordConfirm: z.string().min(1, "Password is a required field"),
 });
 
-type LoginSchema = z.infer<typeof loginSchema>;
+type SignUpSchema = z.infer<typeof signUpSchema>;
 
 export default function Login() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginSchema>({
-    resolver: zodResolver(loginSchema),
+    setFocus,
+  } = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit: SubmitHandler<LoginSchema> = (data) => {
+  const onSubmit: SubmitHandler<SignUpSchema> = (data) => {
     console.log(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1 className="text-2xl font-bold text-center mb-4">Log in</h1>
+      <h1 className="text-2xl font-bold text-center mb-4">Sign up</h1>
+
+      <Input
+        label="Name"
+        placeholder="Joe Bloggs"
+        autoFocus
+        error={errors.name?.message}
+        {...register("name")}
+      />
 
       <Input
         label="Email address"
         type="email"
         placeholder="joe@bloggs.com"
         autoComplete="username"
-        autoFocus
         error={errors.email?.message}
         {...register("email")}
       />
@@ -42,24 +53,27 @@ export default function Login() {
       <PasswordInput
         label="Password"
         placeholder="••••••••••••"
-        autoComplete="current-password"
+        autoComplete="new-password"
         error={errors.password?.message}
         {...register("password")}
       />
 
+      <PasswordInput
+        label="Confirm password"
+        placeholder="••••••••••••"
+        autoComplete="new-password"
+        error={errors.passwordConfirm?.message}
+        {...register("passwordConfirm")}
+      />
+
       <button type="submit" className="button button-full mb-4">
-        Log in
+        Sign up
       </button>
 
-      <p className="text-center mb-4">
-        <Link className="link" href="/forgot-password">
-          Forgot password?
-        </Link>
-      </p>
       <p className="text-center pt-4 border-t">
-        Don&apos;t have an account?{" "}
-        <Link className="link" href="/sign-up">
-          Sign up
+        Already have an account?{" "}
+        <Link className="link" href="/login">
+          Log in
         </Link>
       </p>
     </form>

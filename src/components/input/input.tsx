@@ -59,9 +59,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               "input",
               "w-full rounded-md border border-accent bg-transparent px-4 py-3",
               "outline-none focus:border-orange-400",
-              "placeholder:text-slate-200 placeholder:text-opacity-75 placeholder:opacity-0 placeholder:transition-opacity",
+              "placeholder:text-slate-200 placeholder:opacity-0 placeholder:transition-opacity",
               error &&
-                "border-red-300 focus:border-red-300 focus:ring-2 ring-red-200",
+                "border-red-300 focus:border-red-300 focus:ring-2 ring-red-100",
               className
             )}
             placeholder={placeholder}

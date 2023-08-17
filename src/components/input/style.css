@@ -1,6 +1,6 @@
 .input-container:has(.input:focus, .input:not(:placeholder-shown))
   .input-label {
-  @apply translate-y-[-23px] scale-75 bg-white text-orange-400 text-opacity-80;
+  @apply translate-y-[-23px] scale-75 bg-white text-slate-400;
 }
 
 .input-container.is-invalid:has(.input:focus, .input:not(:placeholder-shown))
@@ -9,7 +9,7 @@
 }
 
 .input-container:has(.input:focus) .input-label {
-  @apply text-opacity-100 !important;
+  @apply text-opacity-100 text-orange-400 !important;
 }
 
 .input-container:has(.input:focus, .input:not(:placeholder-shown))
