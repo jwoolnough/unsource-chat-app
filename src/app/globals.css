@@ -68,7 +68,7 @@
   }
 
   .content {
-    @apply rounded-xl md:p-8 p-6 my-6 bg-white shadow;
+    @apply rounded-[2.75rem] md:p-4 p-3 my-6 bg-white shadow-lg;
     width: min(100%, 36rem);
     transition: width 300ms ease-in-out;
   }

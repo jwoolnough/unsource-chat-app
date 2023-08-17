@@ -3,7 +3,7 @@
 }
 
 .toast {
-  @apply min-h-[3.5rem] relative flex px-6 py-2 mt-2 bg-white rounded-md shadow-sm;
+  @apply min-h-[3.5rem] relative flex px-6 py-2 mt-2 bg-white rounded-md shadow;
   @apply before:absolute before:inset-0 before:w-1 before:bg-current;
 }
 

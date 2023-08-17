@@ -17,7 +17,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/itc7dtm.css" />
       </head>
-      <body className="relative flex isolate flex-col items-center h-screen p-6 bg-slate-50 before:bg-[url('/img/bg-pattern.svg')] before:-z-10 before:opacity-[0.06] before:absolute before:inset-0">
+      <body className="relative flex isolate flex-col items-center min-h-screen p-6 bg-slate-50 before:bg-[url('/img/bg-pattern.svg')] before:-z-10 before:opacity-[0.06] before:absolute before:inset-0">
         <ToastProvider>
           <header className="flex mb-auto">
             <Link href="/">
