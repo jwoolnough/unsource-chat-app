@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { ForgotPasswordForm } from "./forgot-password-form";
+import { ForgotPasswordForm } from "@/features/auth/forgot-password-form";
 
 export const metadata: Metadata = {
   title: "Login",

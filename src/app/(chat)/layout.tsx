@@ -6,7 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth } from "@/services/firebase";
 
-import { Nav } from "@/components/nav";
+import { Nav } from "@/features/layout/nav";
 
 export default function ChatLayout({
   children,

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { SignUpForm } from "./sign-up-form";
+import { SignUpForm } from "@/features/auth/sign-up-form";
 
 export const metadata: Metadata = {
   title: "Sign up",

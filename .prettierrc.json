@@ -5,6 +5,7 @@
     "^@/services/(.*)$",
     "^@/hooks/(.*)$",
     "^@/components/(.*)$",
+    "^@/features/(.*)$",
     "^@/utils/(.*)$",
     "^[./]"
   ],

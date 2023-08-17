@@ -13,10 +13,9 @@ import { toast } from "react-toastify";
 
 import { auth } from "@/services/firebase";
 
-import { clsxm } from "@/utils/clsxm";
+import { Tippy } from "@/components/tippy";
 
-import { Tippy } from "../tippy";
-import "./style.css";
+import { clsxm } from "@/utils/clsxm";
 
 type RenderIconProps = {
   size: number;
