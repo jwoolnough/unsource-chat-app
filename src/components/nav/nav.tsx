@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ComponentProps, MouseEventHandler, cloneElement } from "react";
+import { ComponentProps, MouseEventHandler } from "react";
 import {
   FiHelpCircle,
   FiLogOut,
@@ -9,6 +9,7 @@ import {
   FiSettings,
   FiUser,
 } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 import { auth } from "@/services/firebase";
 
@@ -16,37 +17,47 @@ import { clsxm } from "@/utils/clsxm";
 
 import { Tippy } from "../tippy";
 import "./style.css";
-import { toast } from "react-toastify";
+
+type RenderIconProps = {
+  size: number;
+};
 
 interface NavItemProps extends Omit<ComponentProps<"li">, "onClick"> {
   title: string;
   href?: ComponentProps<typeof Link>["href"];
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  icon: React.ReactElement;
+  renderIcon: (iconProps: RenderIconProps) => React.ReactElement;
 }
 
-const NavItem = ({ title, href, icon, onClick, ...rest }: NavItemProps) => {
+const NavItem = ({
+  title,
+  href,
+  renderIcon,
+  onClick,
+  ...rest
+}: NavItemProps) => {
   const isActive = href === usePathname();
 
-  const styledIcon = cloneElement(icon, {
-    size: 22,
-  });
   const buttonClasses = clsxm(
     "w-9 h-9 text-slate-400 flex items-center justify-center rounded-md",
     "hover:text-orange-500",
     isActive && "text-orange-500 bg-orange-100"
   );
 
+  const iconProps: RenderIconProps = {
+    size: 22,
+  };
+
   return (
     <li {...rest}>
       <Tippy content={title}>
         {href ? (
           <Link href={href} className={buttonClasses}>
-            {styledIcon}
+            {renderIcon(iconProps)}
           </Link>
         ) : (
           <button type="button" onClick={onClick} className={buttonClasses}>
-            {styledIcon}
+            {renderIcon(iconProps)}
           </button>
         )}
       </Tippy>
@@ -62,20 +73,36 @@ const Nav = () => {
       await signOut(auth);
       router.push("/login");
     } catch {
-      toast.error("Unable to log out")
+      toast.error("Unable to log out");
     }
   };
 
   return (
     <nav className="my-6">
       <ul className="flex flex-col h-full gap-[0.375rem]">
-        <NavItem title="Chat" icon={<FiMessageCircle />} href="/" />
-        <NavItem title="Profile" icon={<FiUser />} href="/profile" />
-        <NavItem title="Settings" icon={<FiSettings />} href="/settings" />
-        <NavItem title="Help" icon={<FiHelpCircle />} href="/help" />
+        <NavItem
+          title="Chat"
+          renderIcon={(iconProps) => <FiMessageCircle {...iconProps} />}
+          href="/"
+        />
+        <NavItem
+          title="Profile"
+          renderIcon={(iconProps) => <FiUser {...iconProps} />}
+          href="/profile"
+        />
+        <NavItem
+          title="Settings"
+          renderIcon={(iconProps) => <FiSettings {...iconProps} />}
+          href="/settings"
+        />
+        <NavItem
+          title="Help"
+          renderIcon={(iconProps) => <FiHelpCircle {...iconProps} />}
+          href="/help"
+        />
         <NavItem
           title="Log out"
-          icon={<FiLogOut />}
+          renderIcon={(iconProps) => <FiLogOut {...iconProps} />}
           onClick={handleLogOut}
           className="mt-auto"
         />
