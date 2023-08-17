@@ -1,0 +1,7 @@
+.app-tippy {
+  @apply bg-slate-900;
+}
+
+.app-tippy .tippy-arrow {
+  @apply text-slate-900;
+}

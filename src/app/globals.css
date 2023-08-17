@@ -45,4 +45,12 @@
   .button-full {
     @apply w-full;
   }
+
+  .tippy-box {
+    @apply bg-slate-950;
+  } 
+
+  .tippy-arrow {
+    @apply text-slate-950;
+  }
 }
