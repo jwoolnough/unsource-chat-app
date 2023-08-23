@@ -22,8 +22,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           type="button"
           className={clsxm(
             defaultClasses,
-            "text-slate-400 hover:text-slate-600",
-            "mr-[-2px] flex h-[21px] w-[21px] items-center justify-center"
+            "mr-[-2px] flex h-[21px] w-[21px] items-center justify-center text-slate-400 hover:text-slate-600"
           )}
           onClick={() => setShow(!show)}
           aria-label={!show ? "Show password" : "Hide password"}

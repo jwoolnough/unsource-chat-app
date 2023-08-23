@@ -39,16 +39,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={clsxm("mb-4", containerClassName)}>
         <div
-          className={clsxm(
-            "input-container",
-            "relative",
-            error && "is-invalid"
-          )}
+          className={clsxm("input-container relative", error && "is-invalid")}
         >
           <label
             className={clsxm(
-              "input-label",
-              "absolute left-[13px] top-[13px] inline-block origin-top-left cursor-text px-1 text-slate-200",
+              "input-label absolute left-[13px] top-[13px] inline-block origin-top-left cursor-text px-1 text-slate-200",
               labelClassName
             )}
             htmlFor={id}
@@ -60,9 +55,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             id={id}
             className={clsxm(
-              "input",
-              "border-accent w-full rounded-md border bg-white px-4 py-3",
-              "outline-none focus:border-orange-400",
+              "input border-accent w-full rounded-md border bg-white px-4 py-3 outline-none",
+              "focus:border-orange-400",
               "placeholder:text-slate-200 placeholder:opacity-0 placeholder:transition-opacity",
               error &&
                 "border-red-300 ring-red-100 focus:border-red-300 focus:ring-2",

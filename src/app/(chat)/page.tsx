@@ -1,23 +1,12 @@
-import { FiSearch } from "react-icons/fi";
-
 import { ChatFooter } from "@/features/chat/footer";
+import { ChatHeader } from "@/features/chat/header";
 import { MessagesList } from "@/features/chat/list";
-import { Header } from "@/features/layout/header";
 
 export default function Chat() {
   return (
     <>
-      <Header
-        title="Chat"
-        renderHeaderRight={() => (
-          <button type="button" className="text-slate-400">
-            <FiSearch size={22} />
-          </button>
-        )}
-      />
-
+      <ChatHeader />
       <MessagesList />
-
       <ChatFooter />
     </>
   );

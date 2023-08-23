@@ -10,8 +10,11 @@ import { firestore } from "@/services/firebase/store";
 
 import { clsxm } from "@/utils/clsxm";
 
+import { useLayoutStore } from "../layout/store";
+
 const ChatFooter = () => {
   const [message, setMessage] = useState("");
+  const { isAtBottom } = useLayoutStore();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -37,16 +40,16 @@ const ChatFooter = () => {
 
   return (
     <form
-      className="sticky bottom-0 border-t bg-slate-50/70 p-4 backdrop-blur"
+      className={clsxm(
+        "sticky bottom-0 border-t border-slate-100 border-opacity-0 p-4 transition",
+        !isAtBottom && "border-opacity-100 bg-slate-50/70 backdrop-blur"
+      )}
       onSubmit={handleSubmit}
     >
       <label className="sr-only">Message</label>
       <div className="flex items-end gap-4 rounded-xl bg-white shadow-sm">
         <TextareaAutosize
-          className={clsxm(
-            "block w-full resize-none rounded-bl-xl rounded-tl-xl px-4 py-3 outline-none placeholder:text-slate-200",
-            ""
-          )}
+          className="block w-full resize-none rounded-bl-xl rounded-tl-xl px-4 py-3 outline-none placeholder:text-slate-200"
           placeholder="Write your message..."
           rows={1}
           value={message}
