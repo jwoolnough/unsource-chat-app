@@ -33,7 +33,7 @@ const Nav = ({ className }: NavProps) => {
 
   return (
     <nav className={className}>
-      <ul className="flex justify-between gap-[0.375rem] max-sm:mx-4 sm:h-full sm:flex-col">
+      <ul className="flex justify-between gap-1.5 max-sm:mx-4 sm:h-full sm:flex-col">
         <li className="mb-auto mt-[1.75rem] flex justify-center max-sm:hidden">
           <Link href="/">
             <Image
