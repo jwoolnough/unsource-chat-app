@@ -1,11 +1,11 @@
 import { ChatFooter } from "@/features/chat/footer";
-import { ChatHeader } from "@/features/chat/header";
 import { MessagesList } from "@/features/chat/list";
+import { Header } from "@/features/layout/header";
 
 export default function Chat() {
   return (
     <>
-      <ChatHeader />
+      <Header title="Chat" />
       <MessagesList />
       <ChatFooter />
     </>
