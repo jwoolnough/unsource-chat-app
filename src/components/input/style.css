@@ -1,3 +1,4 @@
+/* TODO: Document */
 .input-container:has(.input:focus, .input:not(:placeholder-shown))
   .input-label {
   @apply translate-y-[-23px] scale-75 bg-white text-slate-400;

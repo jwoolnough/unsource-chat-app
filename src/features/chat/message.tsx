@@ -33,7 +33,7 @@ const Message = ({
   authorId,
   createdAt,
 }: MessageProps) => {
-  const handleDelete: MouseEventHandler<HTMLDivElement> = async () => {
+  const handleDelete: MouseEventHandler<HTMLButtonElement> = async () => {
     try {
       await deleteDoc(doc(firestore, "messages", id));
     } catch (e) {
@@ -45,9 +45,9 @@ const Message = ({
 
   return (
     <motion.div
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: "auto", opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, height: 0 }}
       className={
         "grid grid-cols-[1.5rem_1fr] items-end gap-x-4 before:col-span-2 before:h-1.5 sm:grid-cols-[2rem_1fr]"
       }
@@ -105,6 +105,7 @@ const Message = ({
 
             {isMe && (
               <button
+                onClick={handleDelete}
                 type="button"
                 className="absolute right-2 top-3 flex h-6 w-8 items-center justify-end bg-gradient-to-l from-orange-400 via-orange-400 via-70% pr-1 text-orange-200 opacity-0 transition hover:text-white group-hover:opacity-100"
                 aria-label="More"

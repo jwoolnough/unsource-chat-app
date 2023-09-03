@@ -1,17 +1,17 @@
+
+import { RefObject } from "react";
 import { create } from "zustand"
 
+type ScrollerRef = RefObject<HTMLDivElement> | null;
+
 interface LayoutStore {
-  isAtTop: boolean;
-  isAtBottom: boolean;
-  setIsAtTop: (isAtTop: boolean) => void;
-  setIsAtBottom: (isAtBottom: boolean) => void;
+  scrollerRef: ScrollerRef;
+  setScrollerRef: (scrollerRef: ScrollerRef) => void;
 }
 
 const useLayoutStore = create<LayoutStore>()((set) => ({
-  isAtTop: false,
-  setIsAtTop: (isAtTop) => set({ isAtTop }),
-  isAtBottom: true,
-  setIsAtBottom: (isAtBottom) => set({ isAtBottom }),
+  scrollerRef: null,
+  setScrollerRef: (scrollerRef) => set({ scrollerRef }),
 }))
 
 export { useLayoutStore }

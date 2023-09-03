@@ -3,12 +3,15 @@
 import { differenceInHours, parseISO } from "date-fns";
 import { collection, orderBy, query } from "firebase/firestore";
 import { AnimatePresence } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 import { auth } from "@/services/firebase";
 import { firestore } from "@/services/firebase/store";
 
 import { Message, MessageProps } from "@/features/chat/message";
+
+import { useLayoutStore } from "../layout/store";
 
 type Message = Omit<MessageProps, "showAvatar" | "showDate" | "isMe">;
 
@@ -30,10 +33,31 @@ const q = query(messagesRef, orderBy("createdAt"));
 
 const MessagesList = () => {
   const [data, loading, error] = useCollection(q);
+  const scrollerRef = useLayoutStore((state) => state.scrollerRef);
   const currentUser = auth.currentUser;
+  const hasInitiallyLoaded = useRef(false);
+
+  useEffect(() => {
+    const scroller = scrollerRef?.current;
+
+    if (!scroller || loading) {
+      return;
+    }
+
+    const maxHeight = scroller.scrollHeight;
+    const scrollDistance = scroller.scrollTop + scroller.offsetHeight;
+
+    // Scroll to the bottom if initially loading data, or if the 
+    // panel is currently near the bottom
+    if (scrollDistance + 240 >= maxHeight || !hasInitiallyLoaded.current) {
+      scroller.scrollTo({ top: maxHeight });
+
+      if (!hasInitiallyLoaded.current) hasInitiallyLoaded.current = true;
+    }
+  }, [data]);
 
   return (
-    <div className="flex flex-grow flex-col px-6 py-4 pt-0 md:px-8">
+    <div className="relative flex flex-grow flex-col px-6 pb-4 md:px-8">
       <AnimatePresence>
         {data?.docs.map((doc, i) => {
           const message = doc.data() as Message;

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next-nprogress-bar";
 import { usePathname } from "next/navigation";
-import { UIEvent, useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth } from "@/services/firebase";
@@ -19,36 +19,20 @@ export default function ChatLayout({
   const pathname = usePathname();
   const [user, loading] = useAuthState(auth);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const { isAtTop, isAtBottom, setIsAtTop, setIsAtBottom } = useLayoutStore(
-    (state) => state
-  );
+  const setScrollerRef = useLayoutStore((state) => state.setScrollerRef);
 
   useEffect(() => {
     if (!user && !loading)
       router.push(`/login?redirect=${encodeURIComponent(pathname)}`);
   }, [loading]);
 
-  const handleScroll = useCallback(
-    (e: UIEvent<HTMLDivElement>) => {
-      const scroller = e.currentTarget;
+  useEffect(() => {
+    setScrollerRef(scrollerRef);
 
-      if (scroller.scrollTop === 0 && !isAtTop) {
-        setIsAtTop(true);
-      } else if (isAtTop) {
-        setIsAtTop(false);
-      }
-
-      if (
-        scroller.scrollTop + scroller.offsetHeight === scroller.scrollHeight &&
-        !isAtBottom
-      ) {
-        setIsAtBottom(true);
-      } else if (isAtBottom) {
-        setIsAtBottom(false);
-      }
-    },
-    [isAtTop, isAtBottom]
-  );
+    return () => {
+      setScrollerRef(null);
+    };
+  }, []);
 
   if (loading || !user) {
     return (
@@ -61,15 +45,8 @@ export default function ChatLayout({
       <div className="grid gap-4 sm:grid-cols-[min-content_1fr]">
         <Nav className="max-sm:hidden" />
 
-        <div
-          className="flex max-h-[20rem] min-h-[30rem] flex-col bg-slate-50"
-          style={{ clipPath: "inset(0 round 1.75rem)" }}
-        >
-          <div
-            className="overflow-auto"
-            ref={scrollerRef}
-            onScroll={handleScroll}
-          >
+        <div className="flex max-h-[40rem] min-h-[30rem] flex-col rounded-[1.75rem] bg-slate-50 [clip-path:inset(0_round_1.75rem)]">
+          <div className="flex grow flex-col overflow-auto" ref={scrollerRef}>
             {children}
           </div>
         </div>
