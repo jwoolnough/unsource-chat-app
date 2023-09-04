@@ -1,8 +1,6 @@
 import { format, parseISO } from "date-fns";
 import { deleteDoc, doc } from "firebase/firestore";
 import { motion } from "framer-motion";
-import { MouseEventHandler } from "react";
-import { FiMoreVertical } from "react-icons/fi";
 import TimeAgo from "react-timeago";
 import { toast } from "react-toastify";
 
@@ -11,6 +9,8 @@ import { firestore } from "@/services/firebase/store";
 import { Avatar } from "@/components/avatar";
 
 import { clsxm } from "@/utils/clsxm";
+
+import { MessageMenu } from "./menu";
 
 interface MessageProps {
   id: string;
@@ -33,7 +33,7 @@ const Message = ({
   authorId,
   createdAt,
 }: MessageProps) => {
-  const handleDelete: MouseEventHandler<HTMLButtonElement> = async () => {
+  const handleDelete = async () => {
     try {
       await deleteDoc(doc(firestore, "messages", id));
     } catch (e) {
@@ -103,16 +103,7 @@ const Message = ({
           >
             {content}
 
-            {isMe && (
-              <button
-                onClick={handleDelete}
-                type="button"
-                className="absolute right-2 top-3 flex h-6 w-8 items-center justify-end bg-gradient-to-l from-orange-400 via-orange-400 via-70% pr-1 text-orange-200 opacity-0 transition hover:text-white group-hover:opacity-100"
-                aria-label="More"
-              >
-                <FiMoreVertical size={20} />
-              </button>
-            )}
+            {isMe && <MessageMenu onDelete={() => handleDelete()} />}
           </motion.div>
         </div>
       </div>
