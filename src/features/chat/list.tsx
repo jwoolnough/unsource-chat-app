@@ -47,7 +47,7 @@ const MessagesList = () => {
     const maxHeight = scroller.scrollHeight;
     const scrollDistance = scroller.scrollTop + scroller.offsetHeight;
 
-    // Scroll to the bottom if initially loading data, or if the 
+    // Scroll to the bottom if initially loading data, or if the
     // panel is currently near the bottom
     if (scrollDistance + 240 >= maxHeight || !hasInitiallyLoaded.current) {
       scroller.scrollTo({ top: maxHeight });
