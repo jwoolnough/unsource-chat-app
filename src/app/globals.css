@@ -65,7 +65,6 @@
 
   .content {
     @apply my-6 rounded-xl bg-white p-8 shadow-lg;
-    /* @apply rounded-[2.75rem] md:p-4 p-3 my-6 bg-white shadow-lg; */
     width: min(100%, 40rem);
   }
 
