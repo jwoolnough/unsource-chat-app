@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import { ToastProvider } from "@/components/toast";
 
 import { ProgressBarProvider } from "@/features/layout/progress-bar";
@@ -20,44 +17,9 @@ export default function RootLayout({ children }: WithChildren) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/itc7dtm.css" />
       </head>
-      <body className="relative isolate flex min-h-screen flex-col items-center bg-slate-50 px-2 py-6 before:absolute before:inset-0 before:-z-10 before:bg-[url('/img/bg-pattern.svg')] before:opacity-[0.06]">
+      <body className="relative isolate flex min-h-[100svh] flex-col items-center bg-slate-50 px-2 py-6 before:absolute before:inset-0 before:-z-10 before:bg-[url('/img/bg-pattern.svg')] before:opacity-[0.06]">
         <ProgressBarProvider>
-          <ToastProvider>
-            <header className="mb-auto flex">
-              <Link href="/">
-                <Image
-                  src="/img/logo.svg"
-                  alt="Unsource"
-                  width={177}
-                  height={18}
-                  priority
-                />
-              </Link>
-            </header>
-
-            {children}
-
-            <footer className="mt-auto text-sm sm:flex">
-              <p className="text-center">
-                &copy; {new Date().getFullYear()} Unsource
-              </p>
-              <ul className="flex">
-                <li className="sm:before:mx-3 sm:before:content-['·']">
-                  <Link href="/privacy" className="hover:text-orange-400">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li className="before:mx-3 before:content-['·']">
-                  <Link
-                    href="/terms-of-service"
-                    className="hover:text-orange-400"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </footer>
-          </ToastProvider>
+          <ToastProvider>{children}</ToastProvider>
         </ProgressBarProvider>
       </body>
     </html>
