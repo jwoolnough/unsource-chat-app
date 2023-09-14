@@ -26,25 +26,28 @@ const NavItem = ({
 }: NavItemProps) => {
   const isActive = href === usePathname();
 
-  const buttonClasses = clsxm(
-    "flex h-9 w-9 items-center justify-center rounded-md text-slate-400",
-    "hover:text-orange-500",
-    isActive && "bg-orange-100 text-orange-500"
-  );
-
   const iconProps: RenderIconProps = {
     size: 22,
+  };
+
+  const commonProps = {
+    className: clsxm(
+      "flex h-9 w-9 items-center justify-center rounded-md text-slate-400",
+      "hover:text-orange-500",
+      isActive && "bg-orange-100 text-orange-500"
+    ),
+    "aria-label": title,
   };
 
   return (
     <li {...rest}>
       <Tippy content={title} offset={[0, 2]}>
         {href ? (
-          <Link href={href} className={buttonClasses}>
+          <Link href={href} {...commonProps}>
             {renderIcon(iconProps)}
           </Link>
         ) : (
-          <button type="button" onClick={onClick} className={buttonClasses}>
+          <button type="button" onClick={onClick} {...commonProps}>
             {renderIcon(iconProps)}
           </button>
         )}

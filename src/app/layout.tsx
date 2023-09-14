@@ -9,6 +9,8 @@ export const metadata = {
     template: "%s | Unsource",
     default: "Chat | Unsource",
   },
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, quae",
 };
 
 export default function RootLayout({ children }: WithChildren) {

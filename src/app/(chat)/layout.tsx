@@ -36,7 +36,7 @@ export default function ChatLayout({ children }: WithChildren) {
 
   if (loading || !user) {
     return (
-      <span className="h-8 w-8 animate-spin rounded-full border-4 border-[#8389ad55] border-b-slate-600"></span>
+      <span className="m-auto h-8 w-8 animate-spin rounded-full border-4 border-[#8389ad55] border-b-slate-600"></span>
     );
   }
 
