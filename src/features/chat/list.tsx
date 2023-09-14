@@ -38,7 +38,7 @@ const MessagesListContainer = ({ children }: WithChildren) => (
 );
 
 const MessagesList = () => {
-  const [data, loading, error] = useCollection(q);
+  const [data, loading] = useCollection(q);
   const scrollerRef = useLayoutStore((state) => state.scrollerRef);
   const currentUser = auth.currentUser;
   const hasInitiallyLoaded = useRef(false);
