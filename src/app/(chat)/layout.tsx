@@ -10,11 +10,7 @@ import { auth } from "@/services/firebase";
 import { Nav } from "@/features/layout/nav";
 import { useLayoutStore } from "@/features/layout/store";
 
-export default function ChatLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ChatLayout({ children }: WithChildren) {
   const router = useRouter();
   const pathname = usePathname();
   const [user, loading] = useAuthState(auth);

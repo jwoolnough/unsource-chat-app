@@ -6,10 +6,6 @@ import "react-toastify/dist/ReactToastify.minimal.css";
 
 import "./style.css";
 
-type ToastProviderProps = {
-  children: React.ReactNode;
-};
-
 const TOAST_CLASSES = {
   success: "toast-success",
   error: "toast-error",
@@ -18,7 +14,7 @@ const TOAST_CLASSES = {
   default: "toast",
 } as const;
 
-const ToastProvider = ({ children }: ToastProviderProps) => (
+const ToastProvider = ({ children }: WithChildren) => (
   <>
     {children}
     <ToastContainer

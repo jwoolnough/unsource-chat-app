@@ -31,6 +31,14 @@ const hasHourTimeDifference = (messageLeft: Message, messageRight: Message) => {
 const messagesRef = collection(firestore, "messages");
 const q = query(messagesRef, orderBy("createdAt"));
 
+const MessagesListContainer = ({
+  children,
+}: WithChildren) => (
+  <div className="relative flex flex-grow flex-col px-6 pb-4 md:px-8">
+    {children}
+  </div>
+);
+
 const MessagesList = () => {
   const [data, loading, error] = useCollection(q);
   const scrollerRef = useLayoutStore((state) => state.scrollerRef);
@@ -56,8 +64,16 @@ const MessagesList = () => {
     }
   }, [data]);
 
+  if (loading) {
+    return (
+      <MessagesListContainer>
+        <div>Got some shit here...</div>
+      </MessagesListContainer>
+    );
+  }
+
   return (
-    <div className="relative flex flex-grow flex-col px-6 pb-4 md:px-8">
+    <MessagesListContainer>
       <AnimatePresence>
         {data?.docs.map((doc, i) => {
           const message = doc.data() as Message;
@@ -82,7 +98,7 @@ const MessagesList = () => {
           );
         })}
       </AnimatePresence>
-    </div>
+    </MessagesListContainer>
   );
 };
 
