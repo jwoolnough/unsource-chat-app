@@ -1,0 +1,35 @@
+@keyframes skeleton {
+  from {
+    background-position-x: -200%;
+  }
+
+  to {
+    background-position-x: 200%;
+  }
+}
+
+.skeleton::before,
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.25rem;
+}
+
+.skeleton::before {
+  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(131 137 173);
+  background-color: #d4d6e3;
+}
+
+.skeleton::after {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton 1s infinite linear;
+}

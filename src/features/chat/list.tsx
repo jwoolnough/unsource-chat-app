@@ -9,7 +9,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { auth } from "@/services/firebase";
 import { firestore } from "@/services/firebase/store";
 
-import { Message, MessageProps } from "@/features/chat/message";
+import { Message, MessageLoading, MessageProps } from "@/features/chat/message";
 
 import { useLayoutStore } from "../layout/store";
 
@@ -31,9 +31,7 @@ const hasHourTimeDifference = (messageLeft: Message, messageRight: Message) => {
 const messagesRef = collection(firestore, "messages");
 const q = query(messagesRef, orderBy("createdAt"));
 
-const MessagesListContainer = ({
-  children,
-}: WithChildren) => (
+const MessagesListContainer = ({ children }: WithChildren) => (
   <div className="relative flex flex-grow flex-col px-6 pb-4 md:px-8">
     {children}
   </div>
@@ -67,7 +65,11 @@ const MessagesList = () => {
   if (loading) {
     return (
       <MessagesListContainer>
-        <div>Got some shit here...</div>
+        <MessageLoading numberOfLines={3} width="20rem" showDate />
+        <MessageLoading numberOfLines={1} width="4rem" />
+        <MessageLoading numberOfLines={2} width="8rem" showAvatar />
+        <MessageLoading numberOfLines={3} width="16rem" showDate />
+        <MessageLoading numberOfLines={2} width="20rem" showAvatar />
       </MessagesListContainer>
     );
   }
