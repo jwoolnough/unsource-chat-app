@@ -19,7 +19,7 @@ export default function RootLayout({ children }: WithChildren) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/itc7dtm.css" />
       </head>
-      <body className="relative isolate flex min-h-[100svh] flex-col items-center bg-slate-50 px-2 py-6 before:absolute before:inset-0 before:-z-10 before:bg-[url('/img/bg-pattern.svg')] before:opacity-[0.06]">
+      <body className="relative isolate flex min-h-[100svh] flex-col items-center bg-slate-50 px-4 py-6 before:absolute before:inset-0 before:-z-10 before:bg-[url('/img/bg-pattern.svg')] before:opacity-[0.06]">
         <ProgressBarProvider>
           <ToastProvider>{children}</ToastProvider>
         </ProgressBarProvider>

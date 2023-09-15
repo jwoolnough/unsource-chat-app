@@ -48,7 +48,7 @@ export default function ChatLayout({ children }: WithChildren) {
       <main
         className={clsxm(
           "content content-soft p-4",
-          "max-sm:-mx-2 max-sm:-my-6 max-sm:flex max-sm:h-[100svh] max-sm:w-screen max-sm:rounded-none"
+          "max-sm:-mx-4 max-sm:-my-6 max-sm:flex max-sm:h-[100svh] max-sm:w-screen max-sm:rounded-none"
         )}
       >
         <div className="grid flex-grow grid-rows-[minmax(0,1fr)_min-content] gap-4 sm:grid-cols-[min-content_1fr]">
