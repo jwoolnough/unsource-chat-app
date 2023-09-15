@@ -52,11 +52,15 @@
   }
 
   .button {
-    @apply relative inline-block rounded-full bg-orange-400 px-6 py-3 text-white hover:bg-orange-600;
+    @apply relative inline-block rounded-full bg-orange-400 px-6 py-3 text-white;
+  }
+
+  .button:not([disabled]) {
+    @apply hover:bg-orange-600;
   }
 
   .button[disabled] {
-    @apply pointer-events-none;
+    @apply cursor-not-allowed;
   }
 
   .button-full {

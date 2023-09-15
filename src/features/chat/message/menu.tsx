@@ -65,7 +65,7 @@ const MessageMenu = ({ onDelete }: MessageMenuProps) => {
           onClick={() => setIsOpen(!isOpen)}
           type="button"
           className={clsxm(
-            "absolute right-1.5 top-3 flex h-6 w-8 items-center justify-end rounded-sm bg-gradient-to-l from-orange-400 via-orange-400 via-70% pr-1.5 text-orange-200 opacity-0 ring-white transition hover:text-white focus:bg-orange-400 focus:opacity-100 group-hover:opacity-100",
+            "absolute right-1.5 top-3 flex h-6 w-8 items-center justify-end rounded-sm bg-gradient-to-l from-orange-400 via-orange-400 via-70% pr-1.5 text-orange-200 opacity-0 transition hover:text-white focus:bg-orange-400 focus:opacity-100 focus-visible:ring-white group-hover:opacity-100",
             isOpen && "opacity-100"
           )}
           aria-label="More"

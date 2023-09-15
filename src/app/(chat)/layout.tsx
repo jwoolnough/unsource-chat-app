@@ -26,6 +26,8 @@ export default function ChatLayout({ children }: WithChildren) {
       router.push(`/login?redirect=${encodeURIComponent(pathname)}`);
   }, [loading]);
 
+  // Need access to the scrolling element's ref, for example
+  // keeping it stuck to the bottom when incoming messages arrive
   useEffect(() => {
     setScrollerRef(scrollerRef);
 
