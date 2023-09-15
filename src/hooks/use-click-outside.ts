@@ -1,30 +1,29 @@
-import { RefObject, useEffect } from 'react'
+import { RefObject, useEffect } from "react";
 
-type Handler = (event: MouseEvent) => void
+type Handler = (event: MouseEvent) => void;
 
 const useClickOutside = <T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
-  handler: Handler,
+  handler: Handler
 ): void => {
   useEffect(() => {
-    const el = ref?.current
+    const el = ref?.current;
 
     const clickHandler: Handler = (e) => {
-      
       // Do nothing if clicking ref's element or descendent elements
       if (!el || el.contains(e.target as Node)) {
-        return
+        return;
       }
-  
-      handler(e)
-    }
 
-    window.addEventListener('click', clickHandler)
+      handler(e);
+    };
+
+    window.addEventListener("click", clickHandler);
 
     return () => {
-      window.removeEventListener('click', clickHandler)
-    }
-  }, [ref])
-}
+      window.removeEventListener("click", clickHandler);
+    };
+  }, [ref]);
+};
 
-export { useClickOutside }
+export { useClickOutside };

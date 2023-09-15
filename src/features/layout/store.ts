@@ -1,6 +1,5 @@
-
 import { RefObject } from "react";
-import { create } from "zustand"
+import { create } from "zustand";
 
 type ScrollerRef = RefObject<HTMLDivElement> | null;
 
@@ -12,6 +11,6 @@ interface LayoutStore {
 const useLayoutStore = create<LayoutStore>()((set) => ({
   scrollerRef: null,
   setScrollerRef: (scrollerRef) => set({ scrollerRef }),
-}))
+}));
 
-export { useLayoutStore }
+export { useLayoutStore };

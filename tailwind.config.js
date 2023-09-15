@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        "1.5": "0.375rem",
+        1.5: "0.375rem",
       },
       colors: {
         orange: {
@@ -53,7 +53,7 @@ module.exports = {
         DEFAULT: "0 4px 12px rgba(0, 0, 0, .04)",
         sm: "0 2px 6px rgba(0, 0, 0, .04)",
         lg: "0 4px 24px rgba(0, 0, 0, .04)",
-      }
+      },
     },
   },
   plugins: [],
