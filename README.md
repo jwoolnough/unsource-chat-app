@@ -1,6 +1,6 @@
 # Unsource Chat
 
-Real-time chat application built using Next.js, Firebase and Tailwind for a start up that never came to be.
+Real-time chat application built using Next.js, Firebase and Tailwind for a startup that never came to be.
 
 Demo: [unsource-chat-app.vercel.app](https://unsource-chat-app.vercel.app/)
 
