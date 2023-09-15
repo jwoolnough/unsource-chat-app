@@ -57,12 +57,14 @@ const Nav = ({ className }: NavProps) => {
         <NavItem
           title="Settings"
           renderIcon={(iconProps) => <FiSettings {...iconProps} />}
-          href="/settings"
+          // TODO: Point to proper page
+          href="/profile"
         />
         <NavItem
           title="Help"
           renderIcon={(iconProps) => <FiHelpCircle {...iconProps} />}
-          href="/help"
+          // TODO: Point to proper page
+          href="/profile"
         />
         <NavItem
           title="Log out"
